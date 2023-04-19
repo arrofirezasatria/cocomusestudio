@@ -11,7 +11,7 @@
     "commit": "git-cz",
     "postbuild": "next-sitemap",
     "clean": "rimraf .next out",
-    "start": "next start",
+    "start": "next start -p 3000",
     "lint": "next lint",
     "cypress": "cypress open",
     "prepare": "husky install"
