@@ -1,8 +1,8 @@
-const workaround = require("next-translate-plugin/lib/cjs/utils.js");
+// const workaround = require("next-translate-plugin/lib/cjs/utils.js");
 
 // As a workaround you can change the string of the defaultLoader, this is working fine
-workaround.defaultLoader =
-  "(l, n) => import(`public/locales/${l}/${n}.json`).then((m) => m.default)";
+// workaround.defaultLoader =
+//   "(l, n) => import(`public/locales/${l}/${n}.json`).then((m) => m.default)";
 
 module.exports = {
   locales: ["en", "id"],
@@ -13,4 +13,6 @@ module.exports = {
     "/about": ["about"],
     "/blog": ["blog"],
   },
+  // loadLocaleFrom: (lang, ns) =>
+  //   import(`public/locales/${lang}/${ns}.json`).then((m) => m.defaultt),
 };

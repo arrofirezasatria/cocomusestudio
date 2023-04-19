@@ -2,10 +2,11 @@ import React from "react";
 import AppsContainer from "@layouts/AppsContainer";
 import TitleHeader from "@components/TitleHeader";
 
-import UseTranslation from "next-translate/useTranslation";
+import useTranslation from "next-translate/useTranslation";
 
 export default function about() {
-  const { t } = UseTranslation("about");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = useTranslation("about");
   const descT = t("desc");
   const aboutT = t("title");
 
