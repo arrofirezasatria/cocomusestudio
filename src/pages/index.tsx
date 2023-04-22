@@ -7,6 +7,7 @@ import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import IconBoilerplate from "@components/icon/IconBoilerplate";
 import { textAlign } from "@mui/system";
+import ShowcaseSection from "@components/pages/home/ShowcaseSection";
 
 export default function Home() {
   const { darkMode, toggleDarkMode } = useThemeContext();
@@ -39,39 +40,8 @@ export default function Home() {
               />
             </Box>
           </Box>
-          <Typography
-            textAlign={"center"}
-            sx={{ fontSize: "26px", fontWeight: "bold", fontFamily: "", my: 3 }}
-          >
-            NEXTJS MUI BOILERPLATE - Template One
-          </Typography>
-          <Typography
-            textAlign={"center"}
-            sx={{ fontSize: "18px", fontWeight: "bold", fontFamily: "", my: 3 }}
-          >
-            Complete structured production ready NextJs Boilerplate with styling
-            powered by MUI
-          </Typography>
-          <Typography
-            gutterBottom
-            sx={{ textAlign: "center", paddingBottom: "20px" }}
-          >
-            Nostrud consequat reprehenderit nulla cupidatat duis aliquip in
-            adipisicing. Mollit id ea commodo ea sint aliquip amet nostrud minim
-            non esse dolore eiusmod. Ad nisi eu esse duis minim velit dolore ex.
-            Do consectetur eiusmod duis laborum minim sit cupidatat eu irure
-            aliquip reprehenderit ea ad pariatur. Tempor ullamco qui ea labore
-            magna eu. Lorem dolore elit in laboris sunt.
-          </Typography>
-          <Typography sx={{ textAlign: "center" }}>
-            Nostrud consequat reprehenderit nulla cupidatat duis aliquip in
-            adipisicing. Mollit id ea commodo ea sint aliquip amet nostrud minim
-            non esse dolore eiusmod. Ad nisi eu esse duis minim velit dolore ex.
-            Do consectetur eiusmod duis laborum minim sit cupidatat eu irure
-            aliquip reprehenderit ea ad pariatur. Tempor ullamco qui ea labore
-            magna eu. Lorem dolore elit in laboris sunt.
-          </Typography>
         </section>
+        <ShowcaseSection />
       </Box>
     </AppsContainer>
   );

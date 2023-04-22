@@ -1,6 +1,6 @@
 import React from "react";
 import AppsContainer from "@layouts/AppsContainer";
-import TitleHeader from "@components/TitleHeader";
+import TitleHeader from "@components/common/TitleHeader";
 
 import useTranslation from "next-translate/useTranslation";
 

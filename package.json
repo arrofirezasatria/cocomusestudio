@@ -25,7 +25,8 @@
     "next-seo": "^6.0.0",
     "next-sitemap": "^4.0.7",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",

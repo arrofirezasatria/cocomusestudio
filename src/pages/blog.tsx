@@ -2,7 +2,7 @@ import AppsContainer from "@layouts/AppsContainer";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import React from "react";
 
-import TitleHeader from "@components/TitleHeader";
+import TitleHeader from "@components/common/TitleHeader";
 import Link from "next/link";
 import UseTranslation from "next-translate/useTranslation";
 
