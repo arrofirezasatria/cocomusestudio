@@ -10,6 +10,7 @@ import { textAlign } from "@mui/system";
 import ShowcaseSection from "@components/pages/home/ShowcaseSection";
 import StatsSection from "@components/pages/home/StatsSection";
 import WhoUsedSection from "@components/pages/home/WhoUsedSection";
+import AdvantageSection from "@components/pages/home/AdvantageSection";
 
 export default function Home() {
   const { darkMode, toggleDarkMode } = useThemeContext();
@@ -58,6 +59,7 @@ export default function Home() {
         <StatsSection />
         <ShowcaseSection />
         <WhoUsedSection />
+        <AdvantageSection />
       </Box>
     </AppsContainer>
   );

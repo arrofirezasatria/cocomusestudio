@@ -59,7 +59,7 @@ export default function Footer() {
   const path = router.asPath;
 
   return (
-    <Box component={"footer"} sx={{ borderRadius: "8px" }}>
+    <Box component={"footer"} sx={{ borderRadius: "8px", py: "36px" }}>
       <Stack
         direction="row"
         justifyContent={"space-between"}
