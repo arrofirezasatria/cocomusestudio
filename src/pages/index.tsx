@@ -8,6 +8,8 @@ import Image from "next/image";
 import IconBoilerplate from "@components/icon/IconBoilerplate";
 import { textAlign } from "@mui/system";
 import ShowcaseSection from "@components/pages/home/ShowcaseSection";
+import StatsSection from "@components/pages/home/StatsSection";
+import WhoUsedSection from "@components/pages/home/WhoUsedSection";
 
 export default function Home() {
   const { darkMode, toggleDarkMode } = useThemeContext();
@@ -18,30 +20,44 @@ export default function Home() {
     <AppsContainer>
       <Box component="main" sx={{ minHeight: "640px" }}>
         <header>{/* <h1>Title</h1> */}</header>
-        <section>
-          <Box
-            sx={{ display: "flex", justifyContent: "center", height: "120px" }}
+        <Box component={"section"} mt={"128px"}>
+          <Typography
+            component={"h1"}
+            sx={{
+              fontSize: "72px",
+              fontWeight: "bold",
+              textAlign: "center",
+              background: "linear-gradient(35deg,#555,#000)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              maxWidth: "720px",
+              margin: "auto",
+              lineHeight: 1,
+            }}
           >
-            <Box
-              sx={{
-                justifySelf: "center",
-                alignSelf: "center",
-                position: "relative",
-                borderRadius: "8px",
-                overflow: "hidden",
-                width: "72px",
-                height: "72px",
-              }}
-            >
-              <Image
-                src={"/static/icons/maskable_icon_x384.png"}
-                fill
-                alt={""}
-              />
-            </Box>
-          </Box>
-        </section>
+            The web framework for when it matters
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "24px",
+              my: "24px",
+              textAlign: "center",
+              // background: "linear-gradient(45deg,#555,#000)",
+              // WebkitBackgroundClip: "text",
+              // WebkitTextFillColor: "transparent",
+              maxWidth: "720px",
+              mx: "auto",
+              color: "#666666",
+              lineHeight: 1.2,
+            }}
+          >
+            Peerless performance, efficiency and developer experience. Next.js
+            is trusted by some of the biggest names of the web.
+          </Typography>
+        </Box>
+        <StatsSection />
         <ShowcaseSection />
+        <WhoUsedSection />
       </Box>
     </AppsContainer>
   );

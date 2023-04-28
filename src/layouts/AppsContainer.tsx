@@ -15,11 +15,13 @@ export default function AppsContainer(AppsContainerProps: props) {
   const { children, basicSeo, ...rest } = AppsContainerProps;
 
   return (
-    <Container maxWidth={"lg"} {...rest}>
-      <NextSeo {...basicSeo} />
-      <AppsBar />
-      {children}
-      <Footer />
-    </Container>
+    <>
+      <Container maxWidth={"lg"} {...rest}>
+        <NextSeo {...basicSeo} />
+        <AppsBar />
+        {children}
+        <Footer />
+      </Container>
+    </>
   );
 }

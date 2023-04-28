@@ -2,6 +2,56 @@ import { Box, ButtonBase, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import LanguageIcon from "@mui/icons-material/Language";
+import { data } from "cypress/types/jquery";
+import Image from "next/image";
+
+interface IFooter {
+  title: string;
+  link: string[];
+}
+
+const datafooter: IFooter[] = [
+  {
+    title: "Resource",
+    link: ["Docs", "Learn", "Showcase", "Blog", "Analytics", "Previews"],
+  },
+  {
+    title: "More",
+    link: ["Commerce", "Contact Sales", "GitHub", "Release", "Telemetry"],
+  },
+  {
+    title: "About Vercel",
+    link: [
+      "Next.js + Vercel",
+      "Open Source Software",
+      "GitHub",
+      "Release",
+      "Twitter",
+    ],
+  },
+  {
+    title: "Legal",
+    link: ["Privacy Policy", "Cookie Preferences"],
+  },
+];
+
+const FooterColumn = (data: IFooter) => {
+  return (
+    <Stack>
+      <Typography sx={{ mb: 2 }}>{data.title}</Typography>
+      {data.link.map((item, index) => {
+        return (
+          <Typography
+            key={index}
+            sx={{ color: "#666666", fontSize: "14px", mb: "12px" }}
+          >
+            {item}
+          </Typography>
+        );
+      })}
+    </Stack>
+  );
+};
 
 export default function Footer() {
   const [language, setLanguage] = useState(true);
@@ -9,61 +59,29 @@ export default function Footer() {
   const path = router.asPath;
 
   return (
-    <Box
-      component={"footer"}
-      sx={{ backgroundColor: "#F5F5F5", borderRadius: "8px" }}
-    >
+    <Box component={"footer"} sx={{ borderRadius: "8px" }}>
       <Stack
         direction="row"
         justifyContent={"space-between"}
-        alignItems={"center"}
+        alignItems={"flex-start"}
         sx={{ p: 2 }}
       >
         <Box>
-          <ButtonBase
-            disableTouchRipple
-            onClick={() => {
-              setLanguage((prev) => !prev);
-              router.push(`${path}`, `${path}`, {
-                locale: language ? "id" : "en",
-              });
-            }}
-            sx={{
-              fontSize: "14px !important",
-              py: 0.5,
-              px: 0.5,
-              borderRadius: "8px",
-            }}
-          >
-            <Stack direction={"row"} spacing={0.5}>
-              <LanguageIcon fontSize="small" sx={{ color: "gray" }} />
-              <Typography
-                fontSize={"14px"}
-                sx={{
-                  fontWeight: "bold",
-                  color: "gray",
-                  lineHeight: 1,
-                  textDecoration: "underline",
-                  textUnderlineOffset: "4.5px",
-                }}
-              >
-                {language ? "Indonesia" : "English"}
-              </Typography>
-            </Stack>
-          </ButtonBase>
+          <Image src="/static/icons/Vercel.png" alt="" width={88} height={21} />
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "white",
-            px: 2,
-            py: 1,
-            borderRadius: "8px",
-          }}
-        >
-          <Typography sx={{ fontSize: "14px" }}>
-            Deployed on ▲ Vercel
+        {datafooter.map((item, index) => {
+          return (
+            <FooterColumn title={item.title} link={item.link} key={index} />
+          );
+        })}
+        <Box maxWidth={"240px"}>
+          <Typography sx={{ mb: 2 }}>
+            {"Subscribe to our Newsletter"}
+          </Typography>
+          <Typography sx={{ color: "#666666", fontSize: "14px", mb: "12px" }}>
+            {
+              "Stay updated on new releases and features, guides, and case studies."
+            }
           </Typography>
         </Box>
       </Stack>

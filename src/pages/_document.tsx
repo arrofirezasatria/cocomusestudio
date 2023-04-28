@@ -23,6 +23,15 @@ export default function Document() {
           sizes="180x180"
           href="/static/icons/180x180.png"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Public+Sans&display=swap"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Box component="body" sx={{ display: "block", margin: 0, padding: 0 }}>
         <Main />
