@@ -76,14 +76,22 @@ export default function AdvantageSection() {
       </Stack>
       <Stack direction={"row"} sx={{ justifyContent: "center" }} spacing={4}>
         <Button
+          size="small"
           sx={{
             textTransform: "none",
             backgroundColor: "white",
-            border: "1px solid black",
-            py: "12px",
+            border: "1px solid white",
+            py: "8px",
             px: "32px",
             borderRadius: "8px",
+            color: "black",
             fontSize: "16px",
+            transition: "all .2s ease, border .2s ease, color .2s ease",
+            boxShadow: "0 4px 14px rgba(0,0,0,.05)",
+            "&:hover": {
+              border: "1px solid black",
+              backgroundColor: "white",
+            },
           }}
         >
           Find Partner
@@ -94,10 +102,17 @@ export default function AdvantageSection() {
             backgroundColor: "black",
             border: "1px solid black",
             color: "white",
-            py: "12px",
+            py: "8px",
             px: "32px",
             borderRadius: "8px",
             fontSize: "16px",
+            transition: "all .2s ease,border .2s ease,color .2s ease",
+            boxShadow: "0 4px 14px rgba(0,0,0,.3)",
+            "&:hover": {
+              border: "1px solid black",
+              backgroundColor: "white",
+              color: "black",
+            },
           }}
         >
           Start Learning Next.js
