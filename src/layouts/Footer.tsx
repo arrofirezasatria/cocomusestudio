@@ -1,4 +1,11 @@
-import { Box, ButtonBase, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  ButtonBase,
+  Input,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -83,6 +90,12 @@ export default function Footer() {
               "Stay updated on new releases and features, guides, and case studies."
             }
           </Typography>
+          <TextField
+            id="outlined-basic"
+            label="you@domain.com"
+            variant="outlined"
+            size="small"
+          />
         </Box>
       </Stack>
     </Box>

@@ -11,6 +11,7 @@ import ShowcaseSection from "@components/pages/home/ShowcaseSection";
 import StatsSection from "@components/pages/home/StatsSection";
 import WhoUsedSection from "@components/pages/home/WhoUsedSection";
 import AdvantageSection from "@components/pages/home/AdvantageSection";
+import CarouselCard from "@components/pages/home/CarouselCard";
 
 export default function Home() {
   const { darkMode, toggleDarkMode } = useThemeContext();
@@ -56,6 +57,7 @@ export default function Home() {
             is trusted by some of the biggest names of the web.
           </Typography>
         </Box>
+        <CarouselCard />
         <StatsSection />
         <ShowcaseSection />
         <WhoUsedSection />
