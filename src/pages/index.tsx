@@ -13,6 +13,10 @@ import WhoUsedSection from "@components/pages/home/WhoUsedSection";
 import AdvantageSection from "@components/pages/home/AdvantageSection";
 import CarouselCard from "@components/pages/home/CarouselCard";
 
+const ContactUs = () => {
+  return <Box></Box>;
+};
+
 export default function Home() {
   const { darkMode, toggleDarkMode } = useThemeContext();
   const { t } = useTranslation("home");
@@ -58,6 +62,7 @@ export default function Home() {
           </Typography>
         </Box>
         <CarouselCard />
+        <ContactUs />
         <StatsSection />
         <ShowcaseSection />
         <WhoUsedSection />
