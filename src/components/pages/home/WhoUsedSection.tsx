@@ -14,7 +14,7 @@ const whoused = [
 
 export default function WhoUsedSection() {
   return (
-    <Box sx={{ textAlign: "center", my: "40px" }}>
+    <Box sx={{ textAlign: "center", my: "128px" }}>
       <Typography sx={{ letterSpacing: "2px", fontWeight: "bold" }}>
         POWERING THE BEST FRONTEND TEAMS
       </Typography>

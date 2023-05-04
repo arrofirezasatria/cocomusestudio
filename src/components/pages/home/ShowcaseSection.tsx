@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Container,
   FormControlLabel,
   Grid,
   Paper,
@@ -90,7 +91,8 @@ export default function ShowcaseSection() {
   }
 
   return (
-    <Box
+    <Container
+      maxWidth="lg"
       component={"section"}
       sx={{
         py: "32px",
@@ -226,6 +228,6 @@ export default function ShowcaseSection() {
           );
         })}
       </Grid2>
-    </Box>
+    </Container>
   );
 }

@@ -1,7 +1,10 @@
 import {
   Box,
   ButtonBase,
+  Container,
+  Divider,
   Input,
+  Link,
   Stack,
   TextField,
   Typography,
@@ -11,6 +14,8 @@ import { useRouter } from "next/router";
 import LanguageIcon from "@mui/icons-material/Language";
 import { data } from "cypress/types/jquery";
 import Image from "next/image";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 interface IFooter {
   title: string;
@@ -48,12 +53,21 @@ const FooterColumn = (data: IFooter) => {
       <Typography sx={{ mb: 2 }}>{data.title}</Typography>
       {data.link.map((item, index) => {
         return (
-          <Typography
-            key={index}
-            sx={{ color: "#666666", fontSize: "14px", mb: "12px" }}
-          >
-            {item}
-          </Typography>
+          <Link href="www.google.com" key={index} underline="none">
+            <Typography
+              key={index}
+              sx={{
+                color: "#666666",
+                fontSize: "14px",
+                mb: "12px",
+                "&:hover": {
+                  color: "black",
+                },
+              }}
+            >
+              {item}
+            </Typography>
+          </Link>
         );
       })}
     </Stack>
@@ -66,7 +80,11 @@ export default function Footer() {
   const path = router.asPath;
 
   return (
-    <Box component={"footer"} sx={{ borderRadius: "8px", py: "36px" }}>
+    <Container
+      maxWidth="lg"
+      component={"footer"}
+      sx={{ borderRadius: "8px", py: "36px" }}
+    >
       <Stack
         direction="row"
         justifyContent={"space-between"}
@@ -98,6 +116,20 @@ export default function Footer() {
           />
         </Box>
       </Stack>
-    </Box>
+      <Stack
+        direction={"row"}
+        justifyContent={"space-between"}
+        sx={{ marginTop: "48px" }}
+      >
+        <Typography>
+          Copyright © 2023 Vercel, Inc. All rights reserved.
+        </Typography>
+        <Stack direction={"row"} spacing={2}>
+          <GitHubIcon />
+          <Divider orientation="vertical" flexItem />
+          <TwitterIcon />
+        </Stack>
+      </Stack>
+    </Container>
   );
 }

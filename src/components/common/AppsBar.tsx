@@ -32,8 +32,6 @@ export default function AppsBar() {
       sx={{
         backgroundColor: "transparent",
         boxShadow: "none",
-        borderWidth: "2px",
-        borderStyle: "solid",
       }}
     >
       <Container

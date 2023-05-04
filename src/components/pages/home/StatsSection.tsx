@@ -11,7 +11,12 @@ export default function StatsSection() {
       justifyContent="center"
       py={"48px"}
       px={"16px"}
-      sx={{ backgroundColor: "#FAFAFA", my: "128px" }}
+      sx={{
+        backgroundColor: "#FAFAFA",
+        my: "128px",
+        borderTop: "1px solid #eaeaea",
+        borderBottom: "1px solid #eaeaea",
+      }}
     >
       <Stack alignItems={"center"}>
         <Typography sx={{ fontSize: "48px", fontWeight: "500" }}>
