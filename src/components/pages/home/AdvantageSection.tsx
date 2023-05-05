@@ -43,11 +43,14 @@ const AdvantageItem = (data: IDataAdvantage) => {
           alignItems: "center",
           border: "1px solid #eaeaea",
           mb: "16px",
+          color: "#797979",
         }}
       >
         {data.icon}
       </Box>
-      <Typography sx={{ fontSize: "18px", mb: 1 }}>{data.title}</Typography>
+      <Typography sx={{ fontSize: "18px", mb: 1, fontWeight: 600 }}>
+        {data.title}
+      </Typography>
       <Typography sx={{ fontSize: "16px", color: "#666666" }}>
         {data.desc}
       </Typography>

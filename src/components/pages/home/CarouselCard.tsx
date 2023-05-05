@@ -158,7 +158,7 @@ export default function CarouselCard() {
             },
           }}
         >
-          Cotanct Sales
+          Contact Sales
         </Button>
       </Stack>
     </>
