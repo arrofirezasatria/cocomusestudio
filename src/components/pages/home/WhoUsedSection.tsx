@@ -38,7 +38,15 @@ export default function WhoUsedSection() {
           mb: "64px",
         }}
       >
-        <Typography sx={{ letterSpacing: "2px", fontWeight: "bold" }}>
+        <Typography
+          sx={{
+            fontSize: "14px",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            my: 2,
+            color: "#888888",
+          }}
+        >
           POWERING THE BEST FRONTEND TEAMS
         </Typography>
         <Stack direction="row" spacing={4} sx={{ justifyContent: "center" }}>
