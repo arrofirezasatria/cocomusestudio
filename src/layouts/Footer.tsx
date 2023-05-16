@@ -1,10 +1,17 @@
 import {
   Box,
+  Button,
   ButtonBase,
   Container,
   Divider,
+  FormControl,
+  IconButton,
   Input,
+  InputAdornment,
+  InputBase,
+  InputLabel,
   Link,
+  OutlinedInput,
   Stack,
   TextField,
   Typography,
@@ -16,6 +23,8 @@ import { data } from "cypress/types/jquery";
 import Image from "next/image";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 interface IFooter {
   title: string;
@@ -79,6 +88,16 @@ export default function Footer() {
   const router = useRouter();
   const path = router.asPath;
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -108,12 +127,54 @@ export default function Footer() {
               "Stay updated on new releases and features, guides, and case studies."
             }
           </Typography>
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             label="you@domain.com"
             variant="outlined"
             size="small"
-          />
+          /> */}
+          <FormControl
+            sx={{
+              my: 1,
+              width: "100%",
+              backgroundColor: "#F5F5F5",
+              borderRadius: "8px",
+              "&:focus": {
+                border: "1px solid red",
+              },
+            }}
+            variant="outlined"
+          >
+            <InputLabel
+              variant="outlined"
+              shrink={false}
+              disableAnimation
+              sx={{ fontSize: "12px" }}
+            >
+              you@domain.com
+            </InputLabel>
+            <InputBase
+              size="medium"
+              id="outlined-adornment-password"
+              sx={{
+                fontSize: "14px",
+                pr: "6px",
+                py: "4px",
+                pl: "10px",
+              }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <Button size="small" sx={{ backgroundColor: "white" }}>
+                    <Typography
+                      sx={{ fontSize: "12px", textTransform: "capitalize" }}
+                    >
+                      Subscribe
+                    </Typography>
+                  </Button>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </Box>
       </Stack>
       <Stack
