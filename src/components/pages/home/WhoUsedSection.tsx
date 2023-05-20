@@ -7,6 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { transform } from "cypress/types/lodash";
 import Image from "next/image";
 import React from "react";
 
@@ -72,7 +73,8 @@ export default function WhoUsedSection() {
           })}
         </Stack>
       </Box>
-      <Box
+
+      {/* <Box
         sx={{
           display: "flex",
           py: "64px",
@@ -202,7 +204,7 @@ export default function WhoUsedSection() {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
 
       <Grid
         container
@@ -298,13 +300,28 @@ export default function WhoUsedSection() {
           md={6}
           xs={12}
           sx={{
-            // display: "flex",
+            display: "flex",
             // flex: 1,
             // direction: "row",
-            // alignItems: "center",
-            // justifyContent: "center",
+            alignItems: "center",
+            justifyContent: "center",
             position: "relative",
             height: "21rem",
+            "& div:nth-child(1)": {
+              transform: "rotate(-2deg)",
+              transition: "all .5s ease",
+            },
+            "&:hover": {
+              "& + div:nth-child(1)": {
+                transform: "rotate(-20deg)",
+              },
+              "& div:nth-child(2)": {
+                transform: "rotate(-20deg)",
+              },
+              "& div:nth-child(3)": {
+                transform: "rotate(-20deg)",
+              },
+            },
           }}
         >
           <Box
@@ -315,7 +332,8 @@ export default function WhoUsedSection() {
               borderRadius: "6px",
               minWidth: "220px",
               position: "absolute",
-              transition: "transform .5s ease",
+
+              // transition: "transform .5s ease",
               bottom: 0,
               right: 0,
             }}
