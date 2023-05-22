@@ -145,26 +145,29 @@ export default function Footer() {
             }}
             variant="outlined"
           >
-            <InputLabel
-              variant="outlined"
-              shrink={false}
-              disableAnimation
-              sx={{ fontSize: "12px" }}
-            >
-              you@domain.com
-            </InputLabel>
             <InputBase
               size="medium"
               id="outlined-adornment-password"
+              placeholder="you@domain.com"
               sx={{
                 fontSize: "14px",
                 pr: "6px",
                 py: "4px",
                 pl: "10px",
+                border: "1px solid transparent",
+                borderRadius: "8px",
+                boxSizing: "border-box",
+                "&.Mui-focused": {
+                  border: "1px solid lightgray",
+                },
               }}
               endAdornment={
                 <InputAdornment position="end">
-                  <Button size="small" sx={{ backgroundColor: "white" }}>
+                  <Button
+                    size="small"
+                    sx={{ backgroundColor: "white" }}
+                    disableRipple
+                  >
                     <Typography
                       sx={{ fontSize: "12px", textTransform: "capitalize" }}
                     >

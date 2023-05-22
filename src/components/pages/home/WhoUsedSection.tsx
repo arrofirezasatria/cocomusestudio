@@ -336,6 +336,7 @@ export default function WhoUsedSection() {
               // transition: "transform .5s ease",
               bottom: 0,
               right: 0,
+              zIndex: 3,
             }}
           >
             <Image
@@ -367,10 +368,11 @@ export default function WhoUsedSection() {
               minWidth: "220px",
               position: "absolute",
               transition: "transform .5s ease",
+              zIndex: 2,
             }}
           >
             <Image
-              src={"/static/images/template-next-boilerplate.jpg"}
+              src={"/static/images/template-next-gallery.jpg"}
               alt={""}
               sizes="100vw"
               width={290}
@@ -400,10 +402,11 @@ export default function WhoUsedSection() {
               transition: "transform .5s ease",
               top: 0,
               left: 0,
+              zIndex: 1,
             }}
           >
             <Image
-              src={"/static/images/template-next-boilerplate.jpg"}
+              src={"/static/images/template-next-commerce.jpg"}
               alt={""}
               sizes="100vw"
               width={290}
