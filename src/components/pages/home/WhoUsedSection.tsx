@@ -308,18 +308,27 @@ export default function WhoUsedSection() {
             position: "relative",
             height: "21rem",
             "& div:nth-child(1)": {
+              transition: "all .5s ease",
+            },
+            "& div:nth-child(2)": {
               transform: "rotate(-2deg)",
               transition: "all .5s ease",
             },
+            "& div:nth-child(3)": {
+              transform: "rotate(-4deg)",
+              transition: "all .5s ease",
+            },
             "&:hover": {
-              "& + div:nth-child(1)": {
-                transform: "rotate(-20deg)",
+              "& > div:nth-child(1)": {
+                transform: "rotate(2deg) scale(1.03)",
               },
-              "& div:nth-child(2)": {
-                transform: "rotate(-20deg)",
+              "& > div:nth-child(2)": {
+                transform:
+                  "rotate(-4deg) scale(1.05) translateX(-1.5em) translateY(-0.25em)",
               },
-              "& div:nth-child(3)": {
-                transform: "rotate(-20deg)",
+              "& > div:nth-child(3)": {
+                transform:
+                  "rotate(-10deg) scale(1.05) translateX(-1.5em) translateY(-0.25em)",
               },
             },
           }}
