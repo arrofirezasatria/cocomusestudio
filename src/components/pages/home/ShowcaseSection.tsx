@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonBase,
   Container,
   FormControlLabel,
   Grid,
@@ -16,6 +17,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { filter } from "cypress/types/bluebird";
 import Link from "next/link";
+import { keyframes } from "@mui/system";
 
 // import { AspectRatio } from "@mui/joy/AspectRatio";
 
@@ -81,6 +83,15 @@ const ShowcaseItem = [
     link: "something",
   },
 ];
+
+const spin = keyframes`
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
+  }
+`;
 
 export default function ShowcaseSection() {
   const [choosedCategory, setChoosedCategory] = useState<string>("All");
@@ -190,6 +201,8 @@ export default function ShowcaseSection() {
                       aspectRatio: "16 / 9",
                       marginBottom: "8px",
                       borderRadius: "8px",
+                      animation: `${spin} 1s ease forwards`,
+                      transition: "box-shadow .2s ease",
                     }}
                   >
                     <Image
@@ -228,6 +241,17 @@ export default function ShowcaseSection() {
           );
         })}
       </Grid2>
+      <Box>
+        <ButtonBase
+          sx={{
+            padding: "12px 32px",
+            boxShadow: "0 4px 14px rgba(0,0,0,.05)",
+            borderRadius: "0.5rem",
+          }}
+        >
+          <Typography sx={{ fontSize: "16px" }}>Load More</Typography>
+        </ButtonBase>
+      </Box>
     </Container>
   );
 }

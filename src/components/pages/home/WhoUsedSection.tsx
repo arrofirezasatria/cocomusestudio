@@ -307,14 +307,14 @@ export default function WhoUsedSection() {
             justifyContent: "center",
             position: "relative",
             height: "21rem",
-            "& div:nth-child(1)": {
+            "& > div:nth-child(1)": {
               transition: "all .5s ease",
             },
-            "& div:nth-child(2)": {
+            "& > div:nth-child(2)": {
               transform: "rotate(-2deg)",
               transition: "all .5s ease",
             },
-            "& div:nth-child(3)": {
+            "& > div:nth-child(3)": {
               transform: "rotate(-4deg)",
               transition: "all .5s ease",
             },
@@ -346,6 +346,8 @@ export default function WhoUsedSection() {
               bottom: 0,
               right: 0,
               zIndex: 3,
+              overflow: "hidden",
+              backgroundColor: "white",
             }}
           >
             <Image
@@ -378,6 +380,8 @@ export default function WhoUsedSection() {
               position: "absolute",
               transition: "transform .5s ease",
               zIndex: 2,
+              overflow: "hidden",
+              backgroundColor: "white",
             }}
           >
             <Image
@@ -412,6 +416,8 @@ export default function WhoUsedSection() {
               top: 0,
               left: 0,
               zIndex: 1,
+              overflow: "hidden",
+              backgroundColor: "white",
             }}
           >
             <Image
