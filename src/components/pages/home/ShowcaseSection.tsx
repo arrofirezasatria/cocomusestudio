@@ -247,9 +247,18 @@ export default function ShowcaseSection() {
             padding: "12px 32px",
             boxShadow: "0 4px 14px rgba(0,0,0,.05)",
             borderRadius: "0.5rem",
+            color: "#666",
+            transition: "background .2s ease, border .2s ease, color .2s ease",
+            border: "1px solid #eaeaea",
+            "&:hover": {
+              color: "#000",
+              border: "1px solid #000",
+            },
           }}
         >
-          <Typography sx={{ fontSize: "16px" }}>Load More</Typography>
+          <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
+            Load More
+          </Typography>
         </ButtonBase>
       </Box>
     </Container>

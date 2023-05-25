@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 const commonChild = {
   padding: "2em",
@@ -11,6 +12,10 @@ const commonChild = {
   border: "1px solid var(--accents-1)",
   boxShadow:
     "0 0 0 1px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.05),0 12px 24px rgba(0,0,0,.05)",
+  backgroundColor: "white",
+  "&:hover": {
+    backgroundColor: "#fafafa",
+  },
 };
 
 export default function CarouselCard() {
@@ -49,6 +54,24 @@ export default function CarouselCard() {
               },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100%",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+                <Image
+                  src="/static/images/pages/home/wapo.jpg"
+                  alt=""
+                  height={647}
+                  width={942}
+                />
+              </Box>
+            </Box>
             <Link
               href={"/home"}
               style={{
@@ -58,7 +81,7 @@ export default function CarouselCard() {
                 inset: 0,
               }}
             >
-              asd
+              Read The Washington Posts
             </Link>
             <Box
               sx={{
@@ -76,6 +99,16 @@ export default function CarouselCard() {
                 With Next.js, Vercel, and Sanity, Loom empowers every team to
                 iterate
               </Typography>
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                inset: "2em",
+                top: "auto",
+                paddingTop: "1em",
+              }}
+            >
+              adadad
             </Box>
           </Box>
           <Box
