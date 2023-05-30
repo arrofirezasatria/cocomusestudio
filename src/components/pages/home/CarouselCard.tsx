@@ -48,6 +48,7 @@ export default function CarouselCard() {
             component={"li"}
             sx={{
               ...commonChild,
+              overflow: "hidden",
               "&:nth-child(1)": {
                 gridColumn: "2/3",
                 gridRow: "1/4",
@@ -61,14 +62,29 @@ export default function CarouselCard() {
                 left: 0,
                 height: "100%",
                 width: "100%",
+                overflow: "hidden",
               }}
             >
-              <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "-4rem",
+                  left: "-8rem",
+                  height: 647,
+                  width: 942,
+                  overflow: "hidden",
+                  backgroundColor:
+                    "linear-gradient(30deg,var(#fafafa) -20%,transparent 70%),linear-gradient(220deg,var(#fafafa) -10%,transparent 40%)",
+                }}
+              >
                 <Image
                   src="/static/images/pages/home/wapo.jpg"
                   alt=""
-                  height={647}
-                  width={942}
+                  fill
+                  style={{
+                    opacity: 0.6,
+                    transform: "scale(0.6)",
+                  }}
                 />
               </Box>
             </Box>
@@ -94,8 +110,13 @@ export default function CarouselCard() {
                 height: "100%",
               }}
             >
-              <Typography>Title</Typography>
-              <Typography>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: "22px",
+                  color: "#444444",
+                }}
+              >
                 With Next.js, Vercel, and Sanity, Loom empowers every team to
                 iterate
               </Typography>
@@ -106,6 +127,7 @@ export default function CarouselCard() {
                 inset: "2em",
                 top: "auto",
                 paddingTop: "1em",
+                transform: "translateY(100%) translateZ(0px)",
               }}
             >
               adadad
