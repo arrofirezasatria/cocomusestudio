@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
+import CallMadeIcon from "@mui/icons-material/CallMade";
 
 export default function StatsSection() {
   return (
@@ -18,7 +19,21 @@ export default function StatsSection() {
         borderBottom: "1px solid #eaeaea",
       }}
     >
-      <Stack alignItems={"center"}>
+      <Stack
+        alignItems={"center"}
+        sx={{
+          "& svg": {
+            transform: "translateX(0px) translateY(4px)",
+            
+          },
+          "&:hover": {
+            "& svg": {
+              color: "red !important",
+              transform: "translateX(4px) translateY(-4px)",
+            },
+          },
+        }}
+      >
         <Typography sx={{ fontSize: "48px", fontWeight: "500" }}>
           14th
         </Typography>
@@ -27,11 +42,14 @@ export default function StatsSection() {
         >
           Largest
         </Typography>
-        <Typography
-          sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
-        >
-          on GitHub
-        </Typography>
+        <Stack direction={"row"} spacing={0.5}>
+          <Typography
+            sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
+          >
+            on GitHub
+          </Typography>
+          <CallMadeIcon fontSize={"small"} />
+        </Stack>
       </Stack>
       <Stack alignItems={"center"}>
         <Typography sx={{ fontSize: "48px", fontWeight: "500" }}>#1</Typography>

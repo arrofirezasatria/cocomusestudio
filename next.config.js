@@ -13,8 +13,16 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextTranslate = require("next-translate-plugin");
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.sunpower.id",
+      },
+    ],
+  },
 };
 
 module.exports = withBundleAnalyzer(nextTranslate(withPWA(nextConfig)));
