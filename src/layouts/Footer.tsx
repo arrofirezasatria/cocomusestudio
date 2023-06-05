@@ -169,7 +169,11 @@ export default function Footer() {
                     disableRipple
                   >
                     <Typography
-                      sx={{ fontSize: "12px", textTransform: "capitalize" }}
+                      sx={{
+                        fontSize: "12px",
+                        textTransform: "capitalize",
+                        color: "#666666",
+                      }}
                     >
                       Subscribe
                     </Typography>

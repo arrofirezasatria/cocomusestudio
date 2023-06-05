@@ -13,6 +13,8 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { display, keyframes } from "@mui/system";
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -27,6 +29,15 @@ const shimmer = (w: number, h: number) => `
   <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
 </svg>`;
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacit: 1;
+  }
+`;
 
 const toBase64 = (str: string) =>
   typeof window === "undefined"
@@ -77,7 +88,7 @@ function Page({ index }) {
   // if (data === undefined) return <div>kok undefined</div>;
 
   return (
-    <Grid container width={"1264px"}>
+    <Grid container width={"1264px"} spacing={3} sx={{ my: "2px" }}>
       {data !== undefined ? (
         data.data.map(
           (
@@ -90,7 +101,32 @@ function Page({ index }) {
           )
         )
       ) : (
-        <></>
+        <>
+          {data === undefined ? (
+            <>
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>{" "}
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>{" "}
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>{" "}
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>{" "}
+              <Grid item md={4} key={1}>
+                <Media imageLink={""} />
+              </Grid>
+            </>
+          ) : (
+            <></>
+          )}
+        </>
       )}
     </Grid>
   );
@@ -101,7 +137,7 @@ export default function Check() {
 
   const pages = [];
 
-  for (let i = 1; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     // console.log(i);
     pages.push(<Page index={i} key={i} />);
   }
@@ -120,7 +156,15 @@ function Media(props: MediaProps) {
   const { loading = false, imageLink } = props;
 
   return (
-    <Card sx={{ position: "relative", maxWidth: 420, m: 2, height: "220px" }}>
+    <Card
+      sx={{
+        position: "relative",
+        width: "100%",
+        margin: 0,
+        paddingTop: "56.25%",
+        animation: `${appear} .2s ease forwards`,
+      }}
+    >
       {loading ? (
         <Skeleton sx={{ height: 260 }} animation="wave" variant="rectangular" />
       ) : (
@@ -132,7 +176,10 @@ function Media(props: MediaProps) {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(700, 475)
           )}`}
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "cover",
+            animation: `${appear} .2s ease forwards`,
+          }}
         />
 
         // <CardMedia
