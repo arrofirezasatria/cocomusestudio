@@ -7,7 +7,7 @@ import useSWR from "swr";
 const fetcher2 = (url: RequestInfo | URL) =>
   fetch(url).then((res) => res.json());
 
-function Page({ index }) {
+function Page({ index }: any) {
   console.log(index);
   const { data, error, isLoading, isValidating } = useSWR(
     `https://api.sunpower.id/api/projects?page=${index}`,

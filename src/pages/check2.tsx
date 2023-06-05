@@ -1,7 +1,7 @@
 import { Box, Button, Container, Grid, Skeleton, Stack } from "@mui/material";
 import { error } from "console";
 import { data } from "cypress/types/jquery";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
 
@@ -15,6 +15,9 @@ import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { display, keyframes } from "@mui/system";
+import Link from "next/link";
+
+let nextPage = true;
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -32,7 +35,7 @@ const shimmer = (w: number, h: number) => `
 
 const appear = keyframes`
   from {
-    opacity: 0;
+    opacity: 0;f
   }
   to {
     opacit: 1;
@@ -53,18 +56,31 @@ interface MediaProps {
 const fetcher2 = (url: RequestInfo | URL) =>
   fetch(url).then((res) => res.json());
 
-function Page({ index }) {
-  console.log(index);
+interface PageProps {
+  index: number;
+  key: number;
+}
+
+function Page({ index, key }: PageProps) {
+  // console.log(index);
   const { data, error, isLoading, isValidating } = useSWR(
     `https://api.sunpower.id/api/projects?page=${index}`,
     fetcher2
   );
   // console.log(apiUrl + `/projects?page=${index}`);
   // console.log(count);
-  console.log(data);
+  // console.log(data);
 
   if (data === undefined) {
-    console.log("kok undefined");
+    // console.log("kok undefined");
+  } else {
+    if (data.metadata.has_more_pages === true) {
+      nextPage = true;
+      // console.log("page : " + index + " " + nextPage);
+    } else {
+      nextPage = false;
+      // console.log("page : " + index + " " + nextPage);
+    }
   }
 
   // return data.map((item: { title: any }) => {
@@ -72,15 +88,15 @@ function Page({ index }) {
   // });
 
   if (isLoading) {
-    console.log("masih loading");
+    // console.log("masih loading");
   }
 
   if (isValidating) {
-    console.log("masih validating");
+    // console.log("masih validating");
   }
 
   if (error) {
-    console.log("error appear");
+    // console.log("error appear");
   }
 
   if (error === true) return <div>failed to load</div>;
@@ -88,14 +104,14 @@ function Page({ index }) {
   // if (data === undefined) return <div>kok undefined</div>;
 
   return (
-    <Grid container width={"1264px"} spacing={3} sx={{ my: "2px" }}>
+    <Grid container spacing={2} sx={{ my: "2px" }}>
       {data !== undefined ? (
         data.data.map(
           (
             item: { photo_path_url: string },
             index: React.Key | null | undefined
           ) => (
-            <Grid item md={4} key={index}>
+            <Grid item md={4} sm={6} xs={12} key={index}>
               <Media imageLink={item.photo_path_url} />
             </Grid>
           )
@@ -105,22 +121,31 @@ function Page({ index }) {
           {data === undefined ? (
             <>
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
               </Grid>
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <Media imageLink={""} />
+                <PlaceholderMedia imageLink={""} />
+              </Grid>
+              <Grid item md={4} key={1}>
+                <PlaceholderMedia imageLink={""} />
+              </Grid>
+              <Grid item md={4} key={1}>
+                <PlaceholderMedia imageLink={""} />
+              </Grid>
+              <Grid item md={4} key={1}>
+                <PlaceholderMedia imageLink={""} />
               </Grid>
             </>
           ) : (
@@ -134,19 +159,30 @@ function Page({ index }) {
 
 export default function Check() {
   const [count, setCount] = useState(1);
+  const [IsNextPageAvailable, setIsNextPageAvailable] = useState(false);
 
   const pages = [];
 
   for (let i = 0; i < count; i++) {
-    // console.log(i);
-    pages.push(<Page index={i} key={i} />);
+    console.log(i);
+
+    if (i !== 1) {
+      pages.push(<Page index={i} key={i} />);
+    }
   }
 
+  const handleLoadMore = () => {
+    if (count === 1) setCount((prev) => prev + 2);
+    else setCount((prev) => prev + 1);
+  };
+
   return (
-    <Container>
+    <Container maxWidth={"lg"} sx={{ maxWidth: "1264px !important" }}>
       {pages}
       <Box display={"flex"} justifyContent={"center"}>
-        <Button onClick={() => setCount(count + 1)}>Load More</Button>
+        <Button onClick={handleLoadMore} sx={{ display: `${nextPage}` }}>
+          Load More
+        </Button>
       </Box>
     </Container>
   );
@@ -156,39 +192,92 @@ function Media(props: MediaProps) {
   const { loading = false, imageLink } = props;
 
   return (
-    <Card
+    <Link href={"/"}>
+      <Card
+        sx={{
+          position: "relative",
+          width: "100%",
+          margin: 0,
+          paddingTop: "56.25%",
+          animation: `${appear} .4s ease forwards`,
+          boxShadow: "none",
+        }}
+      >
+        {loading ? (
+          <Skeleton
+            sx={{ height: 260 }}
+            animation="wave"
+            variant="rectangular"
+          />
+        ) : (
+          <>
+            {/* <Image
+              src={imageLink}
+              alt={""}
+              fill
+              placeholder="blur"
+              blurDataURL={`data:ige/svg+xml;base64,${toBase64(
+                shimmer(700, 475)
+              )}`}
+              style={{
+                objectFit: "cover",
+                animation: `${appear} .4s ease forwards`,
+              }}
+            /> */}
+            <Image
+              src={imageLink}
+              alt={""}
+              fill
+              placeholder="blur"
+              blurDataURL={`data:ige/svg+xml;base64,${toBase64(
+                shimmer(700, 475)
+              )}`}
+              style={{
+                objectFit: "cover",
+                animation: `${appear} .4s ease forwards`,
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            ></Box>
+            {/* <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                }}
+            >
+              <>asd</>
+            </Box> */}
+          </>
+        )}
+      </Card>
+    </Link>
+  );
+}
+
+function PlaceholderMedia(props: MediaProps) {
+  const { loading = false, imageLink } = props;
+
+  return (
+    <Skeleton
       sx={{
         position: "relative",
         width: "100%",
         margin: 0,
-        paddingTop: "56.25%",
-        animation: `${appear} .2s ease forwards`,
+        paddingTop: "51.50%",
+        animation: `${appear} .5s ease forwards`,
       }}
-    >
-      {loading ? (
-        <Skeleton sx={{ height: 260 }} animation="wave" variant="rectangular" />
-      ) : (
-        <Image
-          src={imageLink}
-          alt={"asd"}
-          fill
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(700, 475)
-          )}`}
-          style={{
-            objectFit: "cover",
-            animation: `${appear} .2s ease forwards`,
-          }}
-        />
-
-        // <CardMedia
-        //   component="img"
-        //   height="210"
-        //   image={imageLink}
-        //   alt="Nicola Sturgeon on a TED talk stage"
-        // />
-      )}
-    </Card>
+      animation="wave"
+      variant="rounded"
+    />
   );
 }
