@@ -1,4 +1,12 @@
-import { Box, Button, Container, Grid, Skeleton, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Skeleton,
+  Stack,
+} from "@mui/material";
 import { error } from "console";
 import { data } from "cypress/types/jquery";
 import React, { useEffect, useState } from "react";
@@ -19,6 +27,15 @@ import Link from "next/link";
 
 let nextPage = true;
 
+const spin = keyframes`
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
+  }
+`;
+
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -35,10 +52,10 @@ const shimmer = (w: number, h: number) => `
 
 const appear = keyframes`
   from {
-    opacity: 0;f
+    opacity: 0;
   }
   to {
-    opacit: 1;
+    opacity: 1;
   }
 `;
 
@@ -177,14 +194,17 @@ export default function Check() {
   };
 
   return (
-    <Container maxWidth={"lg"} sx={{ maxWidth: "1264px !important" }}>
-      {pages}
-      <Box display={"flex"} justifyContent={"center"}>
-        <Button onClick={handleLoadMore} sx={{ display: `${nextPage}` }}>
-          Load More
-        </Button>
-      </Box>
-    </Container>
+    <>
+      <Box sx={{ height: "420px", backgroundColor: "lightGray" }}>a</Box>
+      <Container maxWidth={"lg"} sx={{ maxWidth: "1264px !important" }}>
+        {pages}
+        <Box display={"flex"} justifyContent={"center"}>
+          <Button onClick={handleLoadMore} sx={{ display: `${nextPage}` }}>
+            Load More
+          </Button>
+        </Box>
+      </Container>
+    </>
   );
 }
 
@@ -192,74 +212,76 @@ function Media(props: MediaProps) {
   const { loading = false, imageLink } = props;
 
   return (
-    <Link href={"/"}>
-      <Card
+    <Link href={"/"} style={{ textDecoration: "none" }}>
+      <Paper
+        elevation={0}
         sx={{
-          position: "relative",
-          width: "100%",
-          margin: 0,
-          paddingTop: "56.25%",
-          animation: `${appear} .4s ease forwards`,
-          boxShadow: "none",
+          padding: "16px",
+          backgroundColor: "#fafafa",
+          border: "1px solid #fafafa",
+          transition: "all .2s ease-in-out",
+          "&:hover > p": {
+            color: "#0070f3",
+          },
+          "&:hover": {
+            border: "1px solid #eaeaea",
+          },
         }}
       >
-        {loading ? (
-          <Skeleton
-            sx={{ height: 260 }}
-            animation="wave"
-            variant="rectangular"
+        <Box
+          sx={{
+            // height: "12rem",
+            backgroundColor: "transparent",
+            position: "relative",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+            overflow: "hidden",
+            aspectRatio: "16 / 9",
+            marginBottom: "8px",
+            borderRadius: "8px",
+            // animation: `${spin} 1s ease forwards`,
+            // transition: "box-shadow .2s ease",
+            // animationDelay: ".2s",
+            // animation: `${appear} .5s ease forwards`,
+            // animationDelay: ".2s",
+            "& > img": {
+              // animationDelay: "2s",
+              animation: `${appear} .5s ease forwards`,
+            },
+          }}
+        >
+          <Image
+            src={imageLink}
+            alt=""
+            width={345}
+            height={198}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
           />
-        ) : (
-          <>
-            {/* <Image
-              src={imageLink}
-              alt={""}
-              fill
-              placeholder="blur"
-              blurDataURL={`data:ige/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-              style={{
-                objectFit: "cover",
-                animation: `${appear} .4s ease forwards`,
-              }}
-            /> */}
-            <Image
-              src={imageLink}
-              alt={""}
-              fill
-              placeholder="blur"
-              blurDataURL={`data:ige/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-              style={{
-                objectFit: "cover",
-                animation: `${appear} .4s ease forwards`,
-              }}
-            />
-            <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-              }}
-            ></Box>
-            {/* <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                }}
-            >
-              <>asd</>
-            </Box> */}
-          </>
-        )}
-      </Card>
+        </Box>
+        <Typography
+          sx={{
+            fontSize: "16px",
+            fontWeight: "600",
+            textDecoration: "none",
+          }}
+        >
+          Mils Kitchen
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "14px",
+            fontWeight: "400",
+            color: "#666666",
+          }}
+        >
+          Residental - Jawa Tengah
+        </Typography>
+      </Paper>
     </Link>
   );
 }
@@ -273,8 +295,9 @@ function PlaceholderMedia(props: MediaProps) {
         position: "relative",
         width: "100%",
         margin: 0,
-        paddingTop: "51.50%",
+        paddingTop: "68.50%",
         animation: `${appear} .5s ease forwards`,
+        backgroundColor: "#fafafa",
       }}
       animation="wave"
       variant="rounded"
