@@ -24,6 +24,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { display, keyframes } from "@mui/system";
 import Link from "next/link";
+import { title } from "process";
 
 let nextPage = true;
 
@@ -59,12 +60,22 @@ const appear = keyframes`
   }
 `;
 
+const boxShadowAnimation = keyframes`
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  }
+`;
+
 const toBase64 = (str: string) =>
   typeof window === "undefined"
     ? Buffer.from(str).toString("base64")
     : window.btoa(str);
 
 interface MediaProps {
+  title: string;
   imageLink: string;
   loading?: boolean;
 }
@@ -125,11 +136,14 @@ function Page({ index, key }: PageProps) {
       {data !== undefined ? (
         data.data.map(
           (
-            item: { photo_path_url: string },
+            item: {
+              title: string;
+              photo_path_url: string;
+            },
             index: React.Key | null | undefined
           ) => (
             <Grid item md={4} sm={6} xs={12} key={index}>
-              <Media imageLink={item.photo_path_url} />
+              <Media imageLink={item.photo_path_url} title={item.title} />
             </Grid>
           )
         )
@@ -138,31 +152,31 @@ function Page({ index, key }: PageProps) {
           {data === undefined ? (
             <>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} />
+                <PlaceholderMedia imageLink={""} title={""} />
               </Grid>
             </>
           ) : (
@@ -209,7 +223,7 @@ export default function Check() {
 }
 
 function Media(props: MediaProps) {
-  const { loading = false, imageLink } = props;
+  const { loading = false, imageLink, title } = props;
 
   return (
     <Link href={"/"} style={{ textDecoration: "none" }}>
@@ -220,11 +234,12 @@ function Media(props: MediaProps) {
           backgroundColor: "#fafafa",
           border: "1px solid #fafafa",
           transition: "all .2s ease-in-out",
-          "&:hover > p": {
-            color: "#0070f3",
-          },
+          // "&:hover > p": {
+          //   color: "#0070f3",
+          // },
           "&:hover": {
             border: "1px solid #eaeaea",
+            color: "#0070f3",
           },
         }}
       >
@@ -240,7 +255,9 @@ function Media(props: MediaProps) {
             aspectRatio: "16 / 9",
             marginBottom: "8px",
             borderRadius: "8px",
-            // animation: `${spin} 1s ease forwards`,
+            animation: `${boxShadowAnimation} 1s ease forwards`,
+            transition: "box-shadow .2s ease",
+
             // transition: "box-shadow .2s ease",
             // animationDelay: ".2s",
             // animation: `${appear} .5s ease forwards`,
@@ -270,7 +287,7 @@ function Media(props: MediaProps) {
             textDecoration: "none",
           }}
         >
-          Mils Kitchen
+          {title}
         </Typography>
         <Typography
           sx={{
