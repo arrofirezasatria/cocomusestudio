@@ -108,6 +108,7 @@ export default function CarouselCard() {
                 justifyContent: "flex-end",
                 flex: "1 1",
                 height: "100%",
+                transform: "translateY(-20px)",
               }}
             >
               <Typography
@@ -117,11 +118,11 @@ export default function CarouselCard() {
                   color: "#444444",
                 }}
               >
-                With Next.js, Vercel, and Sanity, Loom empowers every team to
-                iterate
+                AWS and Vercel: Accelerating innovation with serverless
+                computing
               </Typography>
             </Box>
-            <Box
+            {/* <Box
               sx={{
                 position: "absolute",
                 inset: "2em",
@@ -131,7 +132,7 @@ export default function CarouselCard() {
               }}
             >
               adadad
-            </Box>
+            </Box> */}
           </Box>
           <Box
             component={"li"}
@@ -143,7 +144,37 @@ export default function CarouselCard() {
               },
             }}
           >
-            asd
+            <Link
+              href={"/home"}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                inset: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Box>{/* <Image /> */}</Box>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "18px",
+                  color: "#444444",
+                }}
+              >
+                With Next.js, Vercel, and Sanity, Loom empowers every team to
+                iterate
+              </Typography>
+            </Box>
+            {/* <Box>ada</Box> */}
           </Box>
           <Box
             component={"li"}
@@ -155,8 +186,37 @@ export default function CarouselCard() {
               },
             }}
           >
-            asd
+            <Link
+              href={"/home"}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                inset: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Box>{/* <Image /> */}</Box>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "18px",
+                  color: "#444444",
+                }}
+              >
+                How Plex 6x their impressions deploying Next.js on Vercel
+              </Typography>
+            </Box>
           </Box>
+
           <Box
             component={"li"}
             sx={{
@@ -167,7 +227,35 @@ export default function CarouselCard() {
               },
             }}
           >
-            asd
+            <Link
+              href={"/home"}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                inset: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Box>{/* <Image /> */}</Box>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "18px",
+                  color: "#444444",
+                }}
+              >
+                Serving millions of users on the new MrBeast storefront
+              </Typography>
+            </Box>
           </Box>
           <Box
             component={"li"}
@@ -179,7 +267,35 @@ export default function CarouselCard() {
               },
             }}
           >
-            asd
+            <Link
+              href={"/home"}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                inset: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Box>{/* <Image /> */}</Box>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "18px",
+                  color: "#444444",
+                }}
+              >
+                Navigating tradeoffs in large-scale website migrations
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>

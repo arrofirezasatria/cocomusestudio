@@ -24,12 +24,11 @@ export default function StatsSection() {
         sx={{
           "& svg": {
             transform: "translateX(0px) translateY(4px)",
-            
+            transition: "transform .2s ease",
           },
           "&:hover": {
             "& svg": {
-              color: "red !important",
-              transform: "translateX(4px) translateY(-4px)",
+              transform: "translateX(4px) translateY(0px)",
             },
           },
         }}
@@ -42,7 +41,7 @@ export default function StatsSection() {
         >
           Largest
         </Typography>
-        <Stack direction={"row"} spacing={0.5}>
+        <Stack direction={"row"} spacing={0.4}>
           <Typography
             sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
           >
@@ -51,20 +50,49 @@ export default function StatsSection() {
           <CallMadeIcon fontSize={"small"} />
         </Stack>
       </Stack>
-      <Stack alignItems={"center"}>
+      <Stack
+        alignItems={"center"}
+        sx={{
+          "& svg": {
+            transform: "translateX(0px) translateY(4px)",
+            transition: "transform .2s ease",
+          },
+          "&:hover": {
+            "& svg": {
+              transform: "translateX(4px) translateY(0px)",
+            },
+          },
+        }}
+      >
         <Typography sx={{ fontSize: "48px", fontWeight: "500" }}>#1</Typography>
         <Typography
           sx={{ fontSize: "24px", fontWeight: "400", color: "#333333" }}
         >
           React
         </Typography>
-        <Typography
-          sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
-        >
-          Framework
-        </Typography>
+        <Stack direction={"row"} spacing={0.4}>
+          <Typography
+            sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
+          >
+            Framework
+          </Typography>
+          <CallMadeIcon fontSize={"small"} />
+        </Stack>
       </Stack>
-      <Stack alignItems={"center"}>
+      <Stack
+        alignItems={"center"}
+        sx={{
+          "& svg": {
+            transform: "translateX(0px) translateY(4px)",
+            transition: "transform .2s ease",
+          },
+          "&:hover": {
+            "& svg": {
+              transform: "translateX(4px) translateY(0px)",
+            },
+          },
+        }}
+      >
         <Typography sx={{ fontSize: "48px", fontWeight: "500" }}>
           100,000
         </Typography>
@@ -73,11 +101,14 @@ export default function StatsSection() {
         >
           Stars
         </Typography>
-        <Typography
-          sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
-        >
-          on GithHub
-        </Typography>
+        <Stack direction={"row"} spacing={0.4}>
+          <Typography
+            sx={{ fontSize: "20px", fontWeight: "400", color: "#444444" }}
+          >
+            on GitHub
+          </Typography>
+          <CallMadeIcon fontSize={"small"} />
+        </Stack>
       </Stack>
     </Stack>
   );

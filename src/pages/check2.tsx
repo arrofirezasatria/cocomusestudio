@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonBase,
   Container,
   Grid,
   Paper,
@@ -8,7 +9,6 @@ import {
   Stack,
 } from "@mui/material";
 import { error } from "console";
-import { data } from "cypress/types/jquery";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
@@ -25,8 +25,18 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { display, keyframes } from "@mui/system";
 import Link from "next/link";
 import { title } from "process";
+import CallMadeIcon from "@mui/icons-material/CallMade";
 
 let nextPage = true;
+
+const Category = [
+  "All",
+  "Commercial",
+  "Office",
+  "Residental",
+  "High Rise",
+  "Others",
+];
 
 const spin = keyframes`
   from {
@@ -65,7 +75,7 @@ const boxShadowAnimation = keyframes`
     box-shadow: none;
   }
   to {
-    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
   }
 `;
 
@@ -87,6 +97,7 @@ const fetcher2 = (url: RequestInfo | URL) =>
 interface PageProps {
   index: number;
   key: number;
+  applicationSelected: string;
 }
 
 function Page({ index, key }: PageProps) {
@@ -191,6 +202,7 @@ function Page({ index, key }: PageProps) {
 export default function Check() {
   const [count, setCount] = useState(1);
   const [IsNextPageAvailable, setIsNextPageAvailable] = useState(false);
+  const [applicationSelected, setApplicationSelected] = useState("ALL");
 
   const pages = [];
 
@@ -198,7 +210,9 @@ export default function Check() {
     console.log(i);
 
     if (i !== 1) {
-      pages.push(<Page index={i} key={i} />);
+      pages.push(
+        <Page index={i} key={i} applicationSelected={applicationSelected} />
+      );
     }
   }
 
@@ -207,15 +221,107 @@ export default function Check() {
     else setCount((prev) => prev + 1);
   };
 
+  const [choosedCategory, setChoosedCategory] = useState<string>("All");
+
+  function handleChoosedCategory(item: string) {
+    // setChoosedCategory((prev) => item);
+    // console.log(item);
+    setApplicationSelected("COMMERCIAL");
+  }
+
   return (
     <>
-      <Box sx={{ height: "420px", backgroundColor: "lightGray" }}>a</Box>
-      <Container maxWidth={"lg"} sx={{ maxWidth: "1264px !important" }}>
+      <Box sx={{ height: "70vh", backgroundColor: "lightGray" }}>a</Box>
+
+      <Box sx={{ height: "90px", backgroundColor: "transparent" }}>a</Box>
+      <Typography
+        component={"h4"}
+        sx={{
+          fontSize: "32px",
+          fontWeight: "bold",
+          textAlign: "center",
+          background: "linear-gradient(35deg,#555,#000)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          maxWidth: "920px",
+          margin: "auto",
+          lineHeight: 1,
+          mb: 10,
+        }}
+      >
+        Choose a specific sector for curated design requirements or browse our
+        whole portfolio for inspiration.
+      </Typography>
+      <Container maxWidth={"lg"} sx={{ maxWidth: "1264px !important", my: 8 }}>
+        <Stack direction="row" justifyContent={"center"}>
+          <Stack
+            direction="row"
+            spacing={1}
+            flexWrap={"wrap"}
+            justifyContent={"center"}
+            sx={{ mb: 3 }}
+          >
+            {Category.map((category, index) => {
+              return (
+                <Button
+                  key={index}
+                  onClick={() => handleChoosedCategory(category)}
+                  disableRipple
+                  sx={{
+                    px: "20px",
+                    // py: "8px",
+                    transition: "all .2s ease",
+                    backgroundColor:
+                      category === choosedCategory ? "black" : "white",
+                    color: category === choosedCategory ? "white" : "#666666",
+                    "&:hover": {
+                      color: category === choosedCategory ? "white" : "black",
+                      backgroundColor:
+                        category === choosedCategory ? "black" : "white",
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textTransform: "capitalize",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {category}
+                  </Typography>
+                </Button>
+              );
+            })}
+          </Stack>
+          <Box sx={{ display: "none" }}>
+            <Button>
+              <Typography>Filter kota</Typography>
+            </Button>
+            <Button>
+              <Typography>Filter area</Typography>
+            </Button>
+          </Box>
+        </Stack>
         {pages}
-        <Box display={"flex"} justifyContent={"center"}>
-          <Button onClick={handleLoadMore} sx={{ display: `${nextPage}` }}>
-            Load More
-          </Button>
+        <Box display={"flex"} justifyContent={"center"} sx={{ mt: 4 }}>
+          <ButtonBase
+            onClick={handleLoadMore}
+            sx={{
+              display: `${nextPage}`,
+              backgroundColor: "#FAFAFA",
+              width: "100%",
+              height: "42px",
+              borderRadius: "8px",
+              transition: "all .2s ease-in-out",
+              border: "1px solid #FAFAFA",
+              "&:hover": {
+                border: "1px solid #eaeaea",
+                color: "#0070f3",
+              },
+            }}
+          >
+            <Typography sx={{ fontWeight: 500 }}>Load More</Typography>
+          </ButtonBase>
         </Box>
       </Container>
     </>
@@ -237,9 +343,17 @@ function Media(props: MediaProps) {
           // "&:hover > p": {
           //   color: "#0070f3",
           // },
+          color: "#333333",
           "&:hover": {
             border: "1px solid #eaeaea",
             color: "#0070f3",
+            "& svg": {
+              transform: "translateX(4px) translateY(0px)",
+            },
+          },
+          "& svg": {
+            transform: "translateX(0px) translateY(4px)",
+            transition: "transform .2s ease",
           },
         }}
       >
@@ -280,15 +394,19 @@ function Media(props: MediaProps) {
             }}
           />
         </Box>
-        <Typography
-          sx={{
-            fontSize: "16px",
-            fontWeight: "600",
-            textDecoration: "none",
-          }}
-        >
-          {title}
-        </Typography>
+        <Stack direction={"row"} spacing={0.3}>
+          <Typography
+            sx={{
+              fontSize: "16px",
+              fontWeight: "500",
+              textDecoration: "none",
+              // color: "#333333",
+            }}
+          >
+            {title}
+          </Typography>
+          <CallMadeIcon fontSize={"inherit"} />
+        </Stack>
         <Typography
           sx={{
             fontSize: "14px",
@@ -296,7 +414,7 @@ function Media(props: MediaProps) {
             color: "#666666",
           }}
         >
-          Residental - Jawa Tengah
+          East Java
         </Typography>
       </Paper>
     </Link>

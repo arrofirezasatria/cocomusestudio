@@ -18,6 +18,7 @@ import Image from "next/image";
 import { filter } from "cypress/types/bluebird";
 import Link from "next/link";
 import { keyframes } from "@mui/system";
+import CallMadeIcon from "@mui/icons-material/CallMade";
 
 // import { AspectRatio } from "@mui/joy/AspectRatio";
 
@@ -217,6 +218,7 @@ export default function ShowcaseSection() {
                       }}
                     />
                   </Box>
+
                   <Typography
                     sx={{
                       fontSize: "16px",
@@ -226,6 +228,18 @@ export default function ShowcaseSection() {
                   >
                     {item.name}
                   </Typography>
+                  <Stack direction={"row"} spacing={0.4}>
+                    <Typography
+                      sx={{
+                        fontSize: "20px",
+                        fontWeight: "400",
+                        color: "#444444",
+                      }}
+                    >
+                      on GitHub
+                    </Typography>
+                    <CallMadeIcon fontSize={"small"} />
+                  </Stack>
                   <Typography
                     sx={{
                       fontSize: "14px",
