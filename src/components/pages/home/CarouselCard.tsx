@@ -108,18 +108,17 @@ export default function CarouselCard() {
                 justifyContent: "flex-end",
                 flex: "1 1",
                 height: "100%",
-                transform: "translateY(-20px)",
               }}
             >
               <Typography
                 sx={{
                   fontWeight: 700,
-                  fontSize: "22px",
+                  fontSize: "24px",
                   color: "#444444",
+                  lineHeight: "2rem",
                 }}
               >
-                AWS and Vercel: Accelerating innovation with serverless
-                computing
+                AWS and Vercel: Accelerating innovation serverless computing
               </Typography>
             </Box>
             {/* <Box
@@ -160,14 +159,23 @@ export default function CarouselCard() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                gap: 1.5,
               }}
             >
-              <Box>{/* <Image /> */}</Box>
+              <Box sx={{ position: "relative" }}>
+                <Image
+                  src="/static/images/pages/home/loom.svg"
+                  alt=""
+                  width={101}
+                  height={30}
+                />
+              </Box>
               <Typography
                 sx={{
                   fontWeight: 500,
                   fontSize: "18px",
                   color: "#444444",
+                  lineHeight: "1.5rem",
                 }}
               >
                 With Next.js, Vercel, and Sanity, Loom empowers every team to
@@ -202,14 +210,23 @@ export default function CarouselCard() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                gap: 1.5,
               }}
             >
-              <Box>{/* <Image /> */}</Box>
+              <Box sx={{ position: "relative" }}>
+                <Image
+                  src="/static/images/pages/home/plex.svg"
+                  alt=""
+                  width={70}
+                  height={32}
+                />
+              </Box>
               <Typography
                 sx={{
                   fontWeight: 500,
                   fontSize: "18px",
                   color: "#444444",
+                  lineHeight: "1.5rem",
                 }}
               >
                 How Plex 6x their impressions deploying Next.js on Vercel
@@ -243,14 +260,23 @@ export default function CarouselCard() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                gap: 1.5,
               }}
             >
-              <Box>{/* <Image /> */}</Box>
+              <Box sx={{ position: "relative" }}>
+                <Image
+                  src="/static/images/pages/home/mrbeast.svg"
+                  alt=""
+                  width={129}
+                  height={26}
+                />
+              </Box>
               <Typography
                 sx={{
                   fontWeight: 500,
                   fontSize: "18px",
                   color: "#444444",
+                  lineHeight: "1.5rem",
                 }}
               >
                 Serving millions of users on the new MrBeast storefront
@@ -283,14 +309,23 @@ export default function CarouselCard() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                gap: 1.5,
               }}
             >
-              <Box>{/* <Image /> */}</Box>
+              <Box sx={{ position: "relative" }}>
+                <Image
+                  src="/static/images/pages/home/basement.svg"
+                  alt=""
+                  width={150}
+                  height={21.5}
+                />
+              </Box>
               <Typography
                 sx={{
                   fontWeight: 500,
                   fontSize: "18px",
                   color: "#444444",
+                  lineHeight: "1.5rem",
                 }}
               >
                 Navigating tradeoffs in large-scale website migrations

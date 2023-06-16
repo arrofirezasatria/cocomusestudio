@@ -228,23 +228,11 @@ export default function ShowcaseSection() {
                   >
                     {item.name}
                   </Typography>
-                  <Stack direction={"row"} spacing={0.4}>
-                    <Typography
-                      sx={{
-                        fontSize: "20px",
-                        fontWeight: "400",
-                        color: "#444444",
-                      }}
-                    >
-                      on GitHub
-                    </Typography>
-                    <CallMadeIcon fontSize={"small"} />
-                  </Stack>
                   <Typography
                     sx={{
                       fontSize: "14px",
                       fontWeight: "400",
-                      color: "#666666",
+                      color: "#666666 !important",
                     }}
                   >
                     {item.category}
