@@ -96,9 +96,15 @@ export default function CarouselCard() {
                 height: "100%",
                 inset: 0,
               }}
-            >
-              Read The Washington Posts
-            </Link>
+            ></Link>
+            <Box>
+              <Image
+                src="/static/images/pages/home/wapost.svg"
+                alt=""
+                width={196}
+                height={30}
+              />
+            </Box>
             <Box
               sx={{
                 display: "flex",
