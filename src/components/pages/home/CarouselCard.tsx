@@ -13,6 +13,7 @@ const commonChild = {
   boxShadow:
     "0 0 0 1px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.05),0 12px 24px rgba(0,0,0,.05)",
   backgroundColor: "white",
+  overflow: "hidden",
   "&:hover": {
     backgroundColor: "#fafafa",
   },
@@ -149,6 +150,28 @@ export default function CarouselCard() {
               },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={"/static/images/pages/home/loom-illustration.svg"}
+                alt=""
+                width={454}
+                height={232}
+                style={{
+                  position: "absolute",
+                  opacity: 0.7,
+                  left: "7rem",
+                  top: "-4rem",
+                }}
+              />
+            </Box>
             <Link
               href={"/home"}
               style={{
@@ -158,6 +181,28 @@ export default function CarouselCard() {
                 inset: 0,
               }}
             />
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={"/static/images/pages/home/loom-illustration.svg"}
+                alt=""
+                width={454}
+                height={232}
+                style={{
+                  position: "absolute",
+                  opacity: 0.7,
+                  left: "7rem",
+                  top: "-4rem",
+                }}
+              />
+            </Box>
             <Box
               sx={{
                 width: "100%",
@@ -200,6 +245,28 @@ export default function CarouselCard() {
               },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={"/static/images/pages/home/loom-illustration.svg"}
+                alt=""
+                width={454}
+                height={232}
+                style={{
+                  position: "absolute",
+                  opacity: 0.7,
+                  left: "7rem",
+                  top: "-4rem",
+                }}
+              />
+            </Box>
             <Link
               href={"/home"}
               style={{
@@ -250,6 +317,28 @@ export default function CarouselCard() {
               },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={"/static/images/pages/home/loom-illustration.svg"}
+                alt=""
+                width={454}
+                height={232}
+                style={{
+                  position: "absolute",
+                  opacity: 0.7,
+                  left: "7rem",
+                  top: "-4rem",
+                }}
+              />
+            </Box>
             <Link
               href={"/home"}
               style={{
@@ -299,6 +388,28 @@ export default function CarouselCard() {
               },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={"/static/images/pages/home/loom-illustration.svg"}
+                alt=""
+                width={454}
+                height={232}
+                style={{
+                  position: "absolute",
+                  opacity: 0.7,
+                  left: "7rem",
+                  top: "-4rem",
+                }}
+              />
+            </Box>
             <Link
               href={"/home"}
               style={{

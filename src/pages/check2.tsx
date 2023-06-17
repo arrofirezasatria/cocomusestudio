@@ -30,12 +30,12 @@ import CallMadeIcon from "@mui/icons-material/CallMade";
 let nextPage = true;
 
 const Category = [
-  "All",
-  "Commercial",
-  "Office",
-  "Residental",
-  "High Rise",
-  "Others",
+  "ALL",
+  "COMMERCIAL",
+  "OFFICE",
+  "RESIDENTAL",
+  "HIGH RISE",
+  "OTHERS",
 ];
 
 const spin = keyframes`
@@ -100,12 +100,17 @@ interface PageProps {
   applicationSelected: string;
 }
 
-function Page({ index, key }: PageProps) {
+function Page({ index, key, applicationSelected }: PageProps) {
   // console.log(index);
+
   const { data, error, isLoading, isValidating } = useSWR(
-    `https://api.sunpower.id/api/projects?page=${index}`,
+    applicationSelected === "ALL"
+      ? `https://api.sunpower.id/api/projects?page=${index}`
+      : `https://api.sunpower.id/api/projects?keyword=${applicationSelected}&page=${index}`,
+
     fetcher2
   );
+
   // console.log(apiUrl + `/projects?page=${index}`);
   // console.log(count);
   // console.log(data);
@@ -221,12 +226,13 @@ export default function Check() {
     else setCount((prev) => prev + 1);
   };
 
-  const [choosedCategory, setChoosedCategory] = useState<string>("All");
+  const [choosedCategory, setChoosedCategory] = useState<string>("ALL");
 
   function handleChoosedCategory(item: string) {
-    // setChoosedCategory((prev) => item);
-    // console.log(item);
-    setApplicationSelected("COMMERCIAL");
+    setChoosedCategory(item);
+    console.log(item);
+    setApplicationSelected(item);
+    // setApplicationSelected("EAST JAVA");
   }
 
   return (
