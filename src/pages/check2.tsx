@@ -3,13 +3,18 @@ import {
   Button,
   ButtonBase,
   Container,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
+  SelectChangeEvent,
   Skeleton,
   Stack,
 } from "@mui/material";
 import { error } from "console";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
 
@@ -26,6 +31,7 @@ import { display, keyframes } from "@mui/system";
 import Link from "next/link";
 import { title } from "process";
 import CallMadeIcon from "@mui/icons-material/CallMade";
+import { data } from "cypress/types/jquery";
 
 let nextPage = true;
 
@@ -88,6 +94,8 @@ interface MediaProps {
   title: string;
   imageLink: string;
   loading?: boolean;
+  kota: string;
+  provinsi: string;
 }
 
 // const fetcher = (url) => axios.get(url).then((res) => res.data);
@@ -98,18 +106,36 @@ interface PageProps {
   index: number;
   key: number;
   applicationSelected: string;
+  areaSelected: string;
+  handleLoadMore: any;
 }
 
-function Page({ index, key, applicationSelected }: PageProps) {
+function Page({
+  index,
+  key,
+  applicationSelected,
+  areaSelected,
+  handleLoadMore,
+}: PageProps) {
   // console.log(index);
 
   const { data, error, isLoading, isValidating } = useSWR(
     applicationSelected === "ALL"
-      ? `https://api.sunpower.id/api/projects?page=${index}`
+      ? areaSelected === "ALL"
+        ? `https://api.sunpower.id/api/projects?page=${index}`
+        : `https://api.sunpower.id/api/projects?keyword=${areaSelected}&page=${index}`
+      : areaSelected !== "ALL"
+      ? `https://api.sunpower.id/api/projects?keyword=${applicationSelected}&keyword=${areaSelected}&page=${index}`
       : `https://api.sunpower.id/api/projects?keyword=${applicationSelected}&page=${index}`,
-
     fetcher2
   );
+
+  // const { data, error, isLoading, isValidating } = useSWR(
+  //   applicationSelected === "ALL"
+  //     ? `https://api.sunpower.id/api/projects?page=${index}`
+  //     : `https://api.sunpower.id/api/projects?keyword=${applicationSelected}&page=${index}`,
+  //   fetcher2
+  // );
 
   // console.log(apiUrl + `/projects?page=${index}`);
   // console.log(count);
@@ -120,10 +146,13 @@ function Page({ index, key, applicationSelected }: PageProps) {
   } else {
     if (data.metadata.has_more_pages === true) {
       nextPage = true;
+      handleLoadMore(true);
+      // console.log("true");
       // console.log("page : " + index + " " + nextPage);
     } else {
       nextPage = false;
-      // console.log("page : " + index + " " + nextPage);
+      handleLoadMore(false);
+      // console.log("false");
     }
   }
 
@@ -155,44 +184,112 @@ function Page({ index, key, applicationSelected }: PageProps) {
             item: {
               title: string;
               photo_path_url: string;
+              slug: string;
             },
             index: React.Key | null | undefined
-          ) => (
-            <Grid item md={4} sm={6} xs={12} key={index}>
-              <Media imageLink={item.photo_path_url} title={item.title} />
-            </Grid>
-          )
+          ) => {
+            let temp;
+
+            try {
+              temp = JSON.parse(item.slug.replace("/", ""));
+            } catch (error) {
+              temp = {
+                slug: "grand-pakuwon-surabaya",
+                d: "Surabaya",
+                p: "EAST JAVA",
+                a: "RESIDENTAL",
+              };
+            }
+
+            console.log(temp);
+
+            return (
+              <Grid item md={4} sm={6} xs={12} key={index}>
+                <Media
+                  imageLink={item.photo_path_url}
+                  title={item.title}
+                  kota={temp.d}
+                  provinsi={temp.p}
+                />
+              </Grid>
+            );
+          }
         )
       ) : (
         <>
           {data === undefined ? (
             <>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>{" "}
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>
               <Grid item md={4} key={1}>
-                <PlaceholderMedia imageLink={""} title={""} />
+                <PlaceholderMedia
+                  imageLink={""}
+                  title={""}
+                  kota={""}
+                  provinsi={""}
+                />
               </Grid>
             </>
           ) : (
@@ -208,6 +305,13 @@ export default function Check() {
   const [count, setCount] = useState(1);
   const [IsNextPageAvailable, setIsNextPageAvailable] = useState(false);
   const [applicationSelected, setApplicationSelected] = useState("ALL");
+  const [areaSelected, setAreaSelected] = useState("ALL");
+  const inputRef = useRef(null);
+  const [isStillMore, setIsStillMore] = useState<boolean>(false);
+
+  const handleStillMore = (b: boolean) => {
+    setIsStillMore(b);
+  };
 
   const pages = [];
 
@@ -216,7 +320,13 @@ export default function Check() {
 
     if (i !== 1) {
       pages.push(
-        <Page index={i} key={i} applicationSelected={applicationSelected} />
+        <Page
+          index={i}
+          key={i}
+          applicationSelected={applicationSelected}
+          areaSelected={areaSelected}
+          handleLoadMore={handleStillMore}
+        />
       );
     }
   }
@@ -234,6 +344,72 @@ export default function Check() {
     setApplicationSelected(item);
     // setApplicationSelected("EAST JAVA");
   }
+
+  const Dropwdown = () => {
+    const [age, setAge] = React.useState("");
+
+    const menuItem = [
+      {
+        name: "Area",
+        value: "ALL",
+      },
+      {
+        name: "East Java",
+        value: "EAST JAVA",
+      },
+      {
+        name: "Central Java",
+        value: "CENTRAL JAVA",
+      },
+      {
+        name: "West Java",
+        value: "WEST JAVA",
+      },
+      {
+        name: "Jakarta",
+        value: "JAKARTA",
+      },
+      {
+        name: "Yogyakarta",
+        value: "YOGYAKARTA",
+      },
+      {
+        name: "Banten",
+        value: "BANTEN",
+      },
+      {
+        name: "Jakarta",
+        value: "JAKARTA",
+      },
+    ];
+
+    const handleChange = (event: SelectChangeEvent) => {
+      setAreaSelected(event.target.value as string);
+    };
+
+    return (
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Area</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={areaSelected}
+            // label="Area"
+            onChange={handleChange}
+          >
+            {menuItem.map((item, index) => {
+              return (
+                <MenuItem value={item.value} key={index}>
+                  {item.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+      </Box>
+    );
+  };
 
   return (
     <>
@@ -299,6 +475,7 @@ export default function Check() {
               );
             })}
           </Stack>
+          <Dropwdown />
           <Box sx={{ display: "none" }}>
             <Button>
               <Typography>Filter kota</Typography>
@@ -309,7 +486,12 @@ export default function Check() {
           </Box>
         </Stack>
         {pages}
-        <Box display={"flex"} justifyContent={"center"} sx={{ mt: 4 }}>
+        <Box
+          // ref={inputRef}
+          display={isStillMore ? "flex" : "none"}
+          justifyContent={"center"}
+          sx={{ mt: 4 }}
+        >
           <ButtonBase
             onClick={handleLoadMore}
             sx={{
@@ -335,7 +517,7 @@ export default function Check() {
 }
 
 function Media(props: MediaProps) {
-  const { loading = false, imageLink, title } = props;
+  const { loading = false, imageLink, title, kota, provinsi } = props;
 
   return (
     <Link href={"/"} style={{ textDecoration: "none" }}>
@@ -418,9 +600,10 @@ function Media(props: MediaProps) {
             fontSize: "14px",
             fontWeight: "400",
             color: "#666666",
+            textTransform: "capitalize",
           }}
         >
-          East Java
+          {kota} - {provinsi.toLowerCase()}
         </Typography>
       </Paper>
     </Link>
