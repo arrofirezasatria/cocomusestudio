@@ -114,7 +114,7 @@ export default function CarouselCard() {
                 gap: "1em",
                 justifyContent: "flex-end",
                 flex: "1 1",
-                height: "100%",
+                height: "94%",
               }}
             >
               <Typography
@@ -255,7 +255,7 @@ export default function CarouselCard() {
               }}
             >
               <Image
-                src={"/static/images/pages/home/loom-illustration.svg"}
+                src={"/static/images/pages/home/plex-illustration.svg"}
                 alt=""
                 width={454}
                 height={232}
@@ -327,15 +327,20 @@ export default function CarouselCard() {
               }}
             >
               <Image
-                src={"/static/images/pages/home/loom-illustration.svg"}
+                src={"/static/images/pages/home/mrbeast-picture.avif"}
                 alt=""
-                width={454}
-                height={232}
+                width={388}
+                height={496}
                 style={{
                   position: "absolute",
-                  opacity: 0.7,
-                  left: "7rem",
-                  top: "-4rem",
+                  opacity: 0.1,
+                  right: "-1.25rem",
+                  objectFit: "cover",
+                  height: "100%",
+                  width: "12.5rem",
+                  mixBlendMode: "multiply",
+                  // left: "7rem",
+                  // top: "-4rem",
                 }}
               />
             </Box>
@@ -398,7 +403,7 @@ export default function CarouselCard() {
               }}
             >
               <Image
-                src={"/static/images/pages/home/loom-illustration.svg"}
+                src={"/static/images/pages/home/basement-stickers.svg"}
                 alt=""
                 width={454}
                 height={232}

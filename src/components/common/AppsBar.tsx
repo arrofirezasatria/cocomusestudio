@@ -7,6 +7,7 @@ import {
   Stack,
   Toolbar,
 } from "@mui/material";
+import Image from "next/Image";
 import { useThemeContext } from "@modules/components/ThemeContext";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -58,15 +59,26 @@ export default function AppsBar() {
             sx={{
               display: "flex",
               width: "100%",
-              justifyContent: "flex-end",
-              alignContent: "flex-end",
+              justifyContent: "flex-start",
+              alignContent: "flex-start",
+              px: 2,
             }}
           >
-            <IconButton onClick={toggleDarkMode} sx={{ my: "1.5px", mr: 0.5 }}>
+            <Box sx={{ position: "relative", height: "50px", width: "100px" }}>
+              <Image
+                src="/static/images/icon/cocomuse colored.svg"
+                alt="icon cocomuse color"
+                // width={1592}
+                // height={194}
+                fill
+              />
+            </Box>
+
+            {/* <IconButton onClick={toggleDarkMode} sx={{ my: "1.5px", mr: 0.5 }}>
               {darkMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
+            </IconButton> */}
           </Box>
-          <Box
+          {/* <Box
             component="nav"
             sx={{
               display: "flex",
@@ -113,7 +125,7 @@ export default function AppsBar() {
                 );
               })}
             </Stack>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

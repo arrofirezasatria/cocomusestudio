@@ -32,6 +32,7 @@ import Link from "next/link";
 import { title } from "process";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import { data } from "cypress/types/jquery";
+import pages from ".";
 
 let nextPage = true;
 
@@ -350,7 +351,7 @@ export default function Check() {
 
     const menuItem = [
       {
-        name: "Area",
+        name: "All",
         value: "ALL",
       },
       {
@@ -380,6 +381,50 @@ export default function Check() {
       {
         name: "Jakarta",
         value: "JAKARTA",
+      },
+      {
+        name: "North Sulawesi",
+        value: "NORTH SULAWESI",
+      },
+      {
+        name: "Central Sulawesi",
+        value: "CENTRAL SULAWESI",
+      },
+      {
+        name: "South Sulawesi",
+        value: "SOUTH SULAWESI",
+      },
+      {
+        name: "South East Sulawesi",
+        value: "SOUTH EAST SULAWESI",
+      },
+      // {
+      //   name: "North Kalimantan",
+      //   value: "NORTH KALIMANTAN",
+      // },
+      // {
+      //   name: "Central Kalimantan",
+      //   value: "CENTRAL KALIMANTAN",
+      // },
+      {
+        name: "East Kalimantan",
+        value: "EAST KALIMANTAN",
+      },
+      // {
+      //   name: "West Kalimantan",
+      //   value: "WEST KALIMANTAN",
+      // },
+      {
+        name: "South Kalimantan",
+        value: "SOUTH KALIMANTAN",
+      },
+      {
+        name: "Bali",
+        value: "BALI",
+      },
+      {
+        name: "NTB",
+        value: "NTB",
       },
     ];
 
