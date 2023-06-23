@@ -7,7 +7,7 @@ import {
   Stack,
   Toolbar,
 } from "@mui/material";
-import Image from "next/Image";
+import Image from "next/image";
 import { useThemeContext } from "@modules/components/ThemeContext";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
