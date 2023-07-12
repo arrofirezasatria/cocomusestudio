@@ -6,6 +6,7 @@ import {
   IconButton,
   Stack,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import Image from "next/image";
 import { useThemeContext } from "@modules/components/ThemeContext";
@@ -39,93 +40,59 @@ export default function AppsBar() {
         maxWidth={"lg"}
         disableGutters
         sx={{
-          borderWidth: "2px",
-          backdropFilter: "blur(20px)",
-          boxShadow: `inset 0px -1px 1px ${
-            theme.palette.mode === "dark"
-              ? yaleBlue[400]
-              : theme.palette.grey[100]
-          }`,
-          borderRadius: "8px",
-          my: 2,
           overflow: "hidden",
         }}
       >
         <Toolbar
           disableGutters={true}
-          sx={{ display: "flex", flexDirection: "column" }}
+          sx={{
+            display: "flex",
+            // flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            my: 2,
+          }}
         >
           <Box
             sx={{
+              width: "50px",
+              height: "50px",
+              borderWidth: "2px",
+              backdropFilter: "blur(20px)",
+              boxShadow: `inset 0px -1px 1px ${
+                theme.palette.mode === "dark"
+                  ? yaleBlue[400]
+                  : theme.palette.grey[100]
+              }`,
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
+          >
+            ad
+          </Box>
+          <Stack direction={"row"} sx={{ color: "lightGray" }} spacing={2}>
+            <Typography>About US</Typography>
+            <Typography>Article</Typography>
+            <Typography>Something</Typography>
+          </Stack>
+
+          {/* <Box
+            sx={{
               display: "flex",
               width: "100%",
-              justifyContent: "flex-start",
+              justifyContent: "flex-start", 
               alignContent: "flex-start",
               px: 2,
             }}
-          >
-            <Box sx={{ position: "relative", height: "50px", width: "100px" }}>
-              <Image
+          > */}
+          {/* <Box sx={{ position: "relative", height: "50px", width: "100px" }}> */}
+          {/* <Image
                 src="/static/images/icon/cocomuse colored.svg"
                 alt="icon cocomuse color"
-                // width={1592}
-                // height={194}
                 fill
-              />
-            </Box>
-
-            {/* <IconButton onClick={toggleDarkMode} sx={{ my: "1.5px", mr: 0.5 }}>
-              {darkMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton> */}
-          </Box>
-          {/* <Box
-            component="nav"
-            sx={{
-              display: "flex",
-              backgroundColor: "#F5F5F5",
-              width: "100%",
-              overflow: "hidden",
-              flexGrow: 1,
-              gap: 4,
-              "& ul": {},
-            }}
-          >
-            <Stack
-              component={"ul"}
-              direction="row"
-              spacing={0}
-              sx={{
-                listStyleType: "none",
-                padding: 0,
-                margin: 0,
-                px: "10px",
-                "& li": {
-                  // backgroundColor: "red",
-                  py: 1,
-                  px: 1.5,
-                  my: "4px !important",
-                  borderRadius: "8px",
-                  "& a": {
-                    fontFamily: "",
-                    fontSize: "14px",
-                    textDecoration: "none",
-                    color: "gray",
-                    "&:hover": {
-                      fontWeight: "bold",
-                    },
-                  },
-                },
-              }}
-            >
-              {link.map((item, index) => {
-                return (
-                  <li key={index}>
-                    <Link href={item.link}>{item.title}</Link>
-                  </li>
-                );
-              })}
-            </Stack>
-          </Box> */}
+              /> */}
+          {/* </Box> */}
+          {/* </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
